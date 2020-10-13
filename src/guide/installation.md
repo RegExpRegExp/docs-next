@@ -91,20 +91,47 @@ $ yarn
 $ yarn dev
 ```
 
-## Explanation of Different Builds
+## Explanation of Different Builds 不同打包的解释
 
-In the [`dist/` directory of the npm package](https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.1/dist/) you will find many different builds of Vue.js. Here is an overview of which `dist` file should be used depending on the use-case.
+In the [`dist/` directory of the npm package](https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.1/dist/) you will find many different builds of Vue.js.
+在npm包的[' dist/ '目录](https://cdn.jsdelivr.net/npm/vue@3.0.0-rc.1/dist/)中，你会发现许多不同版本的Vue.js。
+
+Here is an overview of which `dist` file should be used depending on the use-case.
+以下是应该根据用例使用哪个“dist”文件的概述。
 
 ### From CDN or without a Bundler
+从CDN或没有捆绑
 
 #### `vue(.runtime).global(.prod).js`:
 
 - For direct use via `<script src="...">` in the browser, exposes the Vue global.
+-直接使用通过' <script src="…“>”在浏览器中，公开Vue全局变量。
+
+
+
 - In-browser template compilation:
-  - `vue.global.js` is the "full" build that includes both the compiler and the runtime so it supports compiling templates on the fly.
-  - `vue.runtime.global.js` contains only the runtime and requires templates to be pre-compiled during a build step.
-- Inlines all Vue core internal packages - i.e. it's a single file with no dependencies on other files. This means you must import everything from this file and this file only to ensure you are getting the same instance of code.
-- Contains hard-coded prod/dev branches, and the prod build is pre-minified. Use the `*.prod.js` files for production.
+-浏览器内模板编译:
+
+- `vue.global.js` is the "full" build that includes both the compiler and the runtime so it supports compiling templates on the fly.
+——“vue.global.js是“完整的”构建，包括编译器和运行时，所以它支持动态编译模板。
+
+- `vue.runtime.global.js` contains only the runtime and requires templates to be pre-compiled during a build step.
+- ' vue.runtime.global.js '只包含运行时，并且要求模板在构建过程中进行预编译。
+
+- Inlines all Vue core internal packages - i.e. it's a single file with no dependencies on other files.
+-内联所有Vue核心内部包-即，它是一个独立的文件，不依赖于其他文件。
+
+This means you must import everything from this file and this file only to ensure you are getting the same instance of code.
+这意味着您必须从这个文件和这个文件中导入所有内容，以确保获得相同的代码实例。
+
+- Contains hard-coded prod/dev branches, and the prod build is pre-minified.
+-包含硬编码的prod/dev分支，并且prod构建是预先缩小的。
+
+Use the `*.prod.
+使用‘* .prod。
+
+js` files for production.
+js的文件用于生产。
 
 :::tip Note
 Global builds are not [UMD](https://github.com/umdjs/umd) builds. They are built as [IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) and are only meant for direct use via `<script src="...">`.
@@ -113,34 +140,75 @@ Global builds are not [UMD](https://github.com/umdjs/umd) builds. They are built
 #### vue(.runtime).esm-browser(.prod).js:
 
 - For usage via native ES modules imports (in browser via `<script type="module">`.
+-通过本地ES模块导入使用(在浏览器中通过`<script type="module"> `
+
 - Shares the same runtime compilation, dependency inlining and hard-coded prod/dev behavior with the global build.
+-与全局构建共享相同的运行时编译、依赖内联和硬编码的prod/dev行为。
 
 ### With a Bundler
 
 #### vue(.runtime).esm-bundler.js:
 
 - For use with bundlers like `webpack`, `rollup` and `parcel`.
-- Leaves prod/dev branches with `process.env.NODE_ENV guards` (must be replaced by bundler)
-- Does not ship minified builds (to be done together with the rest of the code after bundling)
-- Imports dependencies (e.g. `@vue/runtime-core`, `@vue/runtime-compiler`)
-  - Imported dependencies are also esm-bundler builds and will in turn import their dependencies (e.g. @vue/runtime-core imports @vue/reactivity)
-  - This means you **can** install/import these deps individually without ending up with different instances of these dependencies, but you must make sure they all resolve to the same version.
-- In-browser template compilation:
-  - `vue.runtime.esm-bundler.js` **(default)** is runtime only, and requires all templates to be pre-compiled. This is the default entry for bundlers (via module field in `package.json`) because when using a bundler templates are typically pre-compiled (e.g. in `*.vue` files).
-  - `vue.esm-bundler.js`: includes the runtime compiler. Use this if you are using a bundler but still want runtime template compilation (e.g. in-DOM templates or templates via inline JavaScript strings). You will need to configure your bundler to alias vue to this file.
+-与“webpack”、“rollup”及“parcel”等捆扎程序一起使用。
 
+- Leaves prod/dev branches with `process.env.
+-将prod/dev分支设置为“process.env”。
+
+NODE_ENV guards` (must be replaced by bundler)
+NODE_ENV guard '(必须被bundler替换)
+
+- Does not ship minified builds (to be done together with the rest of the code after bundling)
+-不提供缩小的构建(在绑定后与其余代码一起完成)
+
+- Imports dependencies (e.g.
+-导入依赖项(例如:
+
+`@vue/runtime-core`, `@vue/runtime-compiler`)
+“@vue / runtime-core”、“@vue /运行时编译)
+
+- Imported dependencies are also esm-bundler builds and will in turn import their dependencies (e.g. @vue/runtime-core imports @vue/reactivity)
+导入的依赖项也是esm-bundler构建，并将依次导入它们的依赖项(例如@vue/运行时-core导入@vue/reactivity)
+
+- This means you **can** install/import these deps individually without ending up with different instances of these dependencies, but you must make sure they all resolve to the same version.
+-这意味着您可以** *单独安装/导入这些dep，而不会导致这些依赖项的不同实例，但您必须确保它们都解析为相同的版本。
+
+- In-browser template compilation:
+-浏览器内模板编译:
+
+- `vue.runtime.esm-bundler.js` **(default)** is runtime only, and requires all templates to be pre-compiled.
+- ' vue.runtime.esm-bundler.js '的**(默认)**是只运行时的，并且要求所有的模板都是预先编译的。
+
+This is the default entry for bundlers (via module field in `package.json`) because when using a bundler templates are typically pre-compiled (e.g. in `*.
+这是绑定器的默认条目(通过‘package.json’中的模块字段)，因为使用绑定器模板通常是预编译的(例如在‘*中)。
+vue` files).
+vue的文件)。
+
+- `vue.esm-bundler.js`: includes the runtime compiler.
+- ' vue.esm-bundler.js ':包含运行时编译器。
+
+Use this if you are using a bundler but still want runtime template compilation (e.g. in-DOM templates or templates via inline JavaScript strings).
+如果你正在使用一个bundler但仍然需要运行时模板编译(例如dom内模板或通过内联JavaScript字符串的模板)，可以使用这个。
+
+You will need to configure your bundler to alias vue to this file.
+您将需要配置您的bundler以将vue别名配置到这个文件。
 ### For Server-Side Rendering
 
 #### `vue.cjs(.prod).js`:
 
 - For use in Node.js server-side rendering via `require()`.
+-通过`require()`用于Node.js服务器端渲染。
+
 - If you bundle your app with webpack with `target: 'node'` and properly externalize `vue`, this is the build that will be loaded.
+-如果你把你的应用和webpack捆绑在一起，并正确地具体化“vue”，这就是将要加载的版本。
+
 - The dev/prod files are pre-built, but the appropriate file is automatically required based on `process.env.NODE_ENV`.
+- dev/prod文件是预构建的，但是根据' process.env.NODE_ENV '自动需要相应的文件。
 
 ## Runtime + Compiler vs. Runtime-only
 
 If you need to compile templates on the client (e.g. passing a string to the template option, or mounting to an element using its in-DOM HTML as the template), you will need the compiler and thus the full build:
-
+如果你需要在客户端编译模板(例如，传递一个字符串到模板选项，或挂载到一个元素使用它的in-DOM HTML作为模板)，你将需要编译器和完整的构建:
 ```js
 // this requires the compiler
 Vue.createApp({
@@ -154,5 +222,11 @@ Vue.createApp({
   }
 })
 ```
+When using `vue-loader`, templates inside `*.
+当使用' vue-loader '时，模板在' *中。
 
-When using `vue-loader`, templates inside `*.vue` files are pre-compiled into JavaScript at build time. You don’t really need the compiler in the final bundle, and can therefore use the runtime-only build.
+vue` files are pre-compiled into JavaScript at build time.
+vue的文件在构建时被预编译成JavaScript。
+
+You don’t really need the compiler in the final bundle, and can therefore use the runtime-only build.
+您实际上并不需要最终包中的编译器，因此可以使用只运行时的构建。
