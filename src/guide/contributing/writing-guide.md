@@ -1,18 +1,62 @@
-# Vue Docs Writing Guide
+# Vue Docs Writing Guide(Vue文档写作指南)
 
-Writing documentation is an exercise in empathy. We're not describing an objective reality - the source code already does that. Our job is to help shape the relationship between users and the Vue ecosystem. This ever-evolving guide provides some rules and recommendations on how to do that consistently within the Vue ecosystem.
+Writing documentation is an exercise in empathy.
+编写文档是一种同理心的练习。
+We're not describing an objective reality - the source code already does that.
+我们并不是在描述一个客观现实——源代码已经做到了这一点。
+Our job is to help shape the relationship between users and the Vue ecosystem.
+我们的工作是帮助塑造用户和Vue生态系统之间的关系。
+This ever-evolving guide provides some rules and recommendations on how to do that consistently within the Vue ecosystem.
+这个不断发展的指南提供了一些规则和建议，如何在Vue生态系统中始终如一地做到这一点。
 
 ## Principles
 
-- **A feature doesn't exist until it's well documented.**
-- **Respect users' cognitive capacity (i.e. brain power).** When a user starts reading, they begin with a certain amount of limited brain power and when they run out, they stop learning.
-  - Cognitive capacity is **depleted faster** by complex sentences, having to learn more than one concept at a time, and abstract examples that don't directly relate to a user's work.
-  - Cognitive capacity is **depleted more slowly** when we help them feel consistently smart, powerful, and curious. Breaking things down into digestible pieces and minding the flow of the document can help keep them in this state.
-- **Always try to see from the user's perspective.** When we understand something thoroughly, it becomes obvious to us. This is called _the curse of knowledge_. In order to write good documentation, try to remember what you first needed to know when learning this concept. What jargon did you need to learn? What did you misunderstand? What took a long time to really grasp? Good documentation meets users where they are. It can be helpful to practice explaining the concept to people in person before
-- **Describe the _problem_ first, then the solution.** Before showing how a feature works, it's important to explain why it exists. Otherwise, users won't have the context to know if this information is important to them (is it a problem they experience?) or what prior knowledge/experience to connect it to.
-- **While writing, don't be afraid to ask questions**, _especially_ if you're afraid they might be "dumb". Being vulnerable is hard, but it's the only way for us to more fully understand what we need to explain.
-- **Be involved in feature discussions.** The best APIs come from documentation-driven development, where we build features that are easy to explain, rather than trying to figure out how to explain them later. Asking questions (especially "dumb" questions) earlier often helps reveal confusions, inconsistencies, and problematic behavior before a breaking change would be required to fix them.
-
+A feature doesn't exist until it's well documented.
+一个特性只有在它被很好地记录下来之后才会存在。
+Respect users' cognitive capacity (i.e. brain power).
+尊重用户的认知能力(即脑力)。
+When a user starts reading, they begin with a certain amount of limited brain power and when they run out, they stop learning.
+当用户开始阅读时，他们的脑力有限，当脑力耗尽时，他们就停止学习。
+Cognitive capacity is depleted faster by complex sentences, having to learn more than one concept at a time, and abstract examples that don't directly relate to a user's work.
+认知能力被复杂的句子消耗得更快，同时必须学习多个概念，以及与使用者的工作没有直接关系的抽象例子。
+Cognitive capacity is depleted more slowly when we help them feel consistently smart, powerful, and curious.
+当我们帮助他们始终感到聪明、强大和好奇时，认知能力消耗得会更慢。
+Breaking things down into digestible pieces and minding the flow of the document can help keep them in this state.
+将内容分解为易于理解的部分，并注意文档的流程，可以帮助保持文档处于这种状态。
+Always try to see from the user's perspective.
+总是试着从用户的角度看问题。
+When we understand something thoroughly, it becomes obvious to us.
+当我们彻底理解某件事时，它对我们来说就变得显而易见了。
+This is called the curse of knowledge.
+这被称为知识的诅咒。
+In order to write good documentation, try to remember what you first needed to know when learning this concept.
+为了写出好的文档，试着记住在学习这个概念时首先需要知道的东西。
+What jargon did you need to learn?
+你需要学习哪些行话?
+What did you misunderstand?
+你误解了什么?
+What took a long time to really grasp?
+什么是花了很长时间才真正领会的?
+Good documentation meets users where they are.
+好的文档满足用户的需求。
+It can be helpful to practice explaining the concept to people in person before
+以前亲自向人们解释这个概念是很有帮助的
+Describe the problem first, then the solution.
+先描述问题，再描述解决方案。
+Before showing how a feature works, it's important to explain why it exists.
+在展示一个特性如何工作之前，解释它为什么存在是很重要的。
+Otherwise, users won't have the context to know if this information is important to them (is it a problem they experience?) or what prior knowledge/experience to connect it to.
+否则，用户将无法了解这些信息对他们是否重要(他们是否遇到了问题?)或者将其与哪些先前的知识/经验联系起来。
+While writing, don't be afraid to ask questions, especially if you're afraid they might be "dumb".
+在写作的时候，不要害怕问问题，尤其是如果你担心他们可能是“笨蛋”的话。
+Being vulnerable is hard, but it's the only way for us to more fully understand what we need to explain.
+脆弱是很难的，但这是我们更全面地理解我们需要解释什么的唯一途径。
+Be involved in feature discussions.
+参与特性讨论。
+The best APIs come from documentation-driven development, where we build features that are easy to explain, rather than trying to figure out how to explain them later.
+最好的api来自于文档驱动的开发，在这种开发中，我们构建易于解释的特性，而不是试图弄清楚以后如何解释它们。
+Asking questions (especially "dumb" questions) earlier often helps reveal confusions, inconsistencies, and problematic behavior before a breaking change would be required to fix them.
+尽早地提出问题(尤其是“愚蠢的”问题)通常有助于在需要进行彻底的改变来解决问题之前揭示困惑、不一致和有问题的行为。
 ## Organization
 
 - **Installation/Integration**: Provide a thorough overview of how to integrate the software into as many different kinds of projects as necessary.

@@ -1,4 +1,4 @@
-# Components Basics
+# Components Basics(组件的基本知识)
 
 ## Base Example
 
@@ -23,10 +23,16 @@ app.component('button-counter', {
 ```
 
 ::: info
-We're showing you a simple example here, but in a typical Vue application we use Single File Components instead of a string template. You can find more information about them [in this section](single-file-component.html).
+We're showing you a simple example here, but in a typical Vue application we use Single File Components instead of a string template.
+我们在这里向您展示了一个简单的示例，但是在一个典型的Vue应用程序中，我们使用单个文件组件而不是字符串模板。
+You can find more information about them [in this section](single-file-component.html).
+您可以在[本节](single-file-component.html)找到更多关于它们的信息。
 :::
 
-Components are reusable instances with a name: in this case, `<button-counter>`. We can use this component as a custom element inside a root instance:
+Components are reusable instances with a name: in this case, `<button-counter>`.
+组件是具有名称的可重用实例:在本例中为` <button-counter> `。
+We can use this component as a custom element inside a root instance:
+我们可以在根实例中使用这个组件作为自定义元素:
 
 ```html
 <div id="components-demo">

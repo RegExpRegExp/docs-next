@@ -1,31 +1,41 @@
-# Custom Events
-
-> This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
-
+# Custom Events(自定义事件)
+> This page assumes you've already read the [Components Basics](component-basics.md).
+>本页假设您已经阅读了[Components Basics](component-basic .md)。
+Read that first if you are new to components.
+如果您对组件不熟悉，请先阅读它。
 ## Event Names
-
-Unlike components and props, event names don't provide any automatic case transformation. Instead, the name of an emitted event must exactly match the name used to listen to that event. For example, if emitting a camelCased event name:
+# #事件名称
+Unlike components and props, event names don't provide any automatic case transformation.
+与组件和道具不同，事件名不提供任何自动案例转换。
+Instead, the name of an emitted event must exactly match the name used to listen to that event.
+相反，所发出事件的名称必须与用于侦听该事件的名称完全匹配。
+For example, if emitting a camelCased event name:
+例如，如果发送驼峰大小写事件名:
 
 ```js
 this.$emit('myEvent')
 ```
-
 Listening to the kebab-cased version will have no effect:
+监听(短横线隔开式) 命名的版本将没有任何效果:
 
 ```html
 <!-- Won't work -->
 <my-component @my-event="doSomething"></my-component>
 ```
 
-Since event names will never be used as variable or property names in JavaScript, there is no reason to use camelCase or PascalCase. Additionally, `v-on` event listeners inside DOM templates will be automatically transformed to lowercase (due to HTML's case-insensitivity), so `@myEvent` would become `@myevent` -- making `myEvent` impossible to listen to.
+Since event names will never be used as variable or property names in JavaScript, there is no reason to use camelCase or PascalCase.
+因为在JavaScript中事件名永远不会用作变量名或属性名，所以没有理由使用camelCase或PascalCase。
+Additionally, `v-on` event listeners inside DOM templates will be automatically transformed to lowercase (due to HTML's case-insensitivity), so `@myEvent` would become `@myevent` -- making `myEvent` impossible to listen to
+此外，DOM模板中的“v-on”事件监听器将自动转换为小写(由于HTML的大小写不敏感)，因此“@myEvent”将变成“@myEvent”——使“myEvent”不可能被监听.
 
 For these reasons, we recommend you **always use kebab-case for event names**.
-
+由于这些原因，我们建议您**始终对事件名称使用(短横线隔开式)**。
 ## Defining Custom Events
 
 <VideoLesson href="https://vueschool.io/lessons/defining-custom-events-emits?friend=vuejs" title="Learn how to define which events a component can emit with Vue School">Watch a free video about Defining Custom Events on Vue School</VideoLesson>
 
 Emitted events can be defined on the component via the `emits` option.
+可以通过“emit”选项在组件上定义所发出的事件。
 
 ```js
 app.component('custom-form', {
@@ -34,16 +44,19 @@ app.component('custom-form', {
 ```
 
 When a native event (e.g., `click`) is defined in the `emits` option, the component event will be used __instead__ of a native event listener.
-
+当原生事件(例如“click”)在“emit”选项中定义时，组件事件将被剩余使用，而不是原生事件侦听器。
 ::: tip
+:::提示
 It is recommended to define all emitted events in order to better document how a component should work.
+建议定义所有发出的事件，以便更好地记录组件应该如何工作。
 :::
-
+:::
 ### Validate Emitted Events
-
+###验证发出的事件
 Similar to prop type validation, an emitted event can be validated if it is defined with the Object syntax instead of the Array syntax.
-
+与prop类型验证类似，如果使用对象语法而不是数组语法定义发出的事件，则可以对其进行验证。
 To add validation, the event is assigned a function that receives the arguments passed to the `$emit` call and returns a boolean to indicate whether the event is valid or not.
+要添加验证，将为事件分配一个函数，该函数接收传递给' $emit '调用的参数，并返回一个布尔值来指示事件是否有效。
 
 ```js
 app.component('custom-form', {
